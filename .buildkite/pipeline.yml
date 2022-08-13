@@ -4,7 +4,8 @@ steps:
       - python3 -m venv venv
       - source venv/bin/activate
       - export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-      - pip install -r requirements.txt
+      - python -m pip install --upgrade pip
+      - python -m pip install -r requirements.txt
       - python quickmathsfunctions/src/quickmathsfunctions.py -v
       - python quickmathsfunctions/tests/test_add.py -v
       - pytest quickmathsfunctions/tests/test_subtract.py -v
