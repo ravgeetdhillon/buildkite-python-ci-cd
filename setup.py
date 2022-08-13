@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="quickmathsfunctions",  # This is the name of the package
-    version="0.0.1",  # The initial release version
+    version="0.0.3",  # The initial release version
     author="Ravgeet Dhillon",  # Full name of the author
     description="A simple test package for Buildkite's Python CI/CD demonstration",
     # Long description read from the the readme file
