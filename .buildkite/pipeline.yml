@@ -1,0 +1,14 @@
+steps:
+  - label: Test, Build and Publish Package
+    commands:
+      - python3 -m venv venv
+      - source venv/bin/activate
+      - export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+      - pip install -r requirements.txt
+      - python quickmathsfunctions/src/quickmathsfunctions.py -v
+      - python quickmathsfunctions/tests/test_add.py -v
+      - pytest quickmathsfunctions/tests/test_subtract.py -v
+      - robot quickmathsfunctions/tests/test_multiply.robot
+      - python setup.py sdist bdist_wheel
+      - twine upload dist/* --username __token__ --password $PYPI_API_TOKEN
+      - curl -X POST -d "branches=master" -d "token=$READTHEDOCS_WEBHOOK_TOKEN" $READTHEDOCS_WEBHOOK_URL
